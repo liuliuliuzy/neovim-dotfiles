@@ -44,6 +44,11 @@ opt.smartindent = true
 cmd("syntax enable")
 
 --------------------
+-- enable mouse
+--------------------
+opt.mouse = "a"
+
+--------------------
 -- color
 --------------------
 opt.termguicolors = true       -- use 24bit rgb color
