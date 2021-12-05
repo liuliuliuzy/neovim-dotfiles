@@ -14,6 +14,8 @@ lua require('plugin-configs/comment')
 lua require('plugin-configs/nvim-autopairs')
 lua require('plugin-configs/lualine')
 lua require('plugin-configs/lspcolors')
+lua require('plugin-configs/telescope')
+lua require('plugin-configs/treesitter')
 
 " language server
 lua require('lsp/nvim-cmp')

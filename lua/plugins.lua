@@ -46,6 +46,19 @@ return require('packer').startup(function()
         'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons'}
     }
+
+    -- telescope
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/plenary.nvim'}}
+    }
+
+    -- nvim-treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+    
 end)
 
 
