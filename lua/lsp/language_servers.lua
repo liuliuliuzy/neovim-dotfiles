@@ -58,35 +58,9 @@ local my_on_attach = function(client, bufnr)
         vim.api.nvim_command [[augroup END]]
     end
 
-    -- protocol.CompletionItemKind = {
-    --     '', -- Text
-    --     '', -- Method
-    --     '', -- Function
-    --     '', -- Constructor
-    --     '', -- Field
-    --     '', -- Variable
-    --     '', -- Class
-    --     'ﰮ', -- Interface
-    --     '', -- Module
-    --     '', -- Property
-    --     '', -- Unit
-    --     '', -- Value
-    --     '', -- Enum
-    --     '', -- Keyword
-    --     '﬌', -- Snippet
-    --     '', -- Color
-    --     '', -- File
-    --     '', -- Reference
-    --     '', -- Folder
-    --     '', -- EnumMember
-    --     '', -- Constant
-    --     '', -- Struct
-    --     '', -- Event
-    --     'ﬦ', -- Operator
-    --     '', -- TypeParameter
-    -- }
 end
 
+-- python
 nvim_lsp['pyright'].setup {
     on_attach = my_on_attach,
     -- filetypes = {"py"},
@@ -96,6 +70,22 @@ nvim_lsp['pyright'].setup {
     }
 }
 
+-- c/c++/objective-c
+-- build & install ccls according to https://github.com/MaskRay/ccls/wiki/Build
+nvim_lsp.ccls.setup {
+    on_attach = my_on_attach,
+    capabilities = capabilities,
+    flags = {
+        debounce_text_changes = 150,
+    },
+    init_options = {
+        cache = {
+            directory = "/home/leo/.cache/ccls",
+        },
+    }
+}
+
+-- configure lspkind
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 cmp.setup {

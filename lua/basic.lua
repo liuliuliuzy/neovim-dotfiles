@@ -53,7 +53,9 @@ opt.mouse = "a"
 --------------------
 opt.termguicolors = true       -- use 24bit rgb color
 opt.background = 'dark'
-cmd('colorscheme NeoSolarized') -- use NeoSolarized theme: https://github.com/overcache/NeoSolarized
+-- cmd('colorscheme NeoSolarized')    -- use NeoSolarized theme: https://github.com/overcache/NeoSolarized
+-- cmd('colorscheme everforest')      -- use Everforest theme:   https://github.com/sainnhe/everforest
+cmd('colorscheme tokyonight')         -- https://awesomeopensource.com/project/folke/tokyonight.nvim
 
 --------------------
 -- ignore case
