@@ -54,8 +54,11 @@ opt.mouse = "a"
 opt.termguicolors = true       -- use 24bit rgb color
 opt.background = 'dark'
 -- cmd('colorscheme NeoSolarized')    -- use NeoSolarized theme: https://github.com/overcache/NeoSolarized
--- cmd('colorscheme everforest')      -- use Everforest theme:   https://github.com/sainnhe/everforest
-cmd('colorscheme tokyonight')         -- https://awesomeopensource.com/project/folke/tokyonight.nvim
+cmd('colorscheme catppuccin')
+-- cmd('set cursorline')
+
+-- 这个theme的runtimepath设置有问题，总是加载不出来
+-- cmd('colorscheme onehalfdark')     -- use onehalf theme: https://github.com/sonph/onehalf
 
 --------------------
 -- ignore case

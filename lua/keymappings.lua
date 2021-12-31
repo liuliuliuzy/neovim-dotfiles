@@ -35,6 +35,11 @@ map('n', '<A-l>', '<C-w>l', opt)
 -- nvim-tree
 map('n', '<A-w>', ':NvimTreeToggle<CR>', opt)
 
+-- lspsaga
+map('n', 'gh', ':Lspsaga lsp_finder<CR>', opt)
+map('n', 'gp', ':Lspsaga preview_definition<CR>', opt)
+map('n', 'gr', ':Lspsaga rename<CR>', opt)
+
 -- bufferline
 map('n', '<C-h>', ':BufferLineCyclePrev<CR>', opt)
 map('n', '<C-l>', ':BufferLineCycleNext<CR>', opt)

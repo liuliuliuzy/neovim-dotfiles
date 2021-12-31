@@ -1,24 +1,10 @@
 -- configure language servers
-
+vim.lsp.set_log_level("debug")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- set python language server
--- local nvim_lsp = require('lspconfig')
--- local servers = {'pyright'} -- installed language servers
--- for _, server in ipairs(servers) do
---     nvim_lsp[server].setup {
---         capabilities = capabilities,
---         on_attach = require('keymappings').lsp_on_attach,
---         flags = {
---             debounce_text_changes = 150,
---         }
---     }
--- end
-
-
 local nvim_lsp = require('lspconfig')
-local protocol = require('vim.lsp.protocol')
+-- local protocol = require('vim.lsp.protocol')
 
 -- define my on_attach funciton
 local my_on_attach = function(client, bufnr)
@@ -34,7 +20,7 @@ local my_on_attach = function(client, bufnr)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-    --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
     --buf_set_keymap('i', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
     buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
@@ -70,8 +56,7 @@ nvim_lsp['pyright'].setup {
     }
 }
 
--- c/c++/objective-c
--- build & install ccls according to https://github.com/MaskRay/ccls/wiki/Build
+-- c/c++
 nvim_lsp.ccls.setup {
     on_attach = my_on_attach,
     capabilities = capabilities,
@@ -80,10 +65,63 @@ nvim_lsp.ccls.setup {
     },
     init_options = {
         cache = {
-            directory = "/home/leo/.cache/ccls",
-        },
+            directory = "/home/leo/.cache/ccls"
+        }
     }
 }
+
+-- gopls
+-- according to https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim
+nvim_lsp.gopls.setup {
+    on_attach = my_on_attach,
+    capabilities = capabilities,
+    cmd = {"gopls", "serve"},
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
+        },
+    },
+}
+
+-- rust
+-- use rust-tools: https://github.com/simrat39/rust-tools.nvim
+-- see lua/plugin-configs/rust-tools.lua
+
+-- auto sort imported packages for golang, see: https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-imports
+-- function goimports(timeout_ms)
+--     local context = { only = { "source.organizeImports" } }
+--     vim.validate { context = { context, "t", true } }
+--
+--     local params = vim.lsp.util.make_range_params()
+--     params.context = context
+--
+--     -- See the implementation of the textDocument/codeAction callback
+--     -- (lua/vim/lsp/handler.lua) for how to do this properly.
+--     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
+--     if not result or next(result) == nil then return end
+--     local actions = result[1].result
+--     if not actions then return end
+--     local action = actions[1]
+--
+--     -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
+--     -- is a CodeAction, it can have either an edit, a command or both. Edits
+--     -- should be executed first.
+--     if action.edit or type(action.command) == "table" then
+--         if action.edit then
+--             vim.lsp.util.apply_workspace_edit(action.edit)
+--         end
+--         if type(action.command) == "table" then
+--             vim.lsp.buf.execute_command(action.command)
+--         end
+--     else
+--         vim.lsp.buf.execute_command(action)
+--     end
+-- end
+--
+-- vim.api.nvim_command [[autocmd BufWritePre *.go lua goimports(1000)]]
 
 -- configure lspkind
 local cmp = require('cmp')

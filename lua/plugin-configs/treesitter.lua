@@ -8,6 +8,9 @@ require'nvim-treesitter.configs'.setup {
         disable = {},
     },
     ensure_installed = {
-        "python"
+        "python",
+        "go",
+        "c",
+        "cpp"
     },
 }

@@ -60,8 +60,24 @@ return require('packer').startup(function()
     }
 
     -- themes
-    use 'folke/tokyonight.nvim'
-    
+    -- use 'folke/tokyonight.nvim'
+    -- use {
+    --     'sonph/onehalf',
+    --     rtp = 'vim',
+    -- }
+    -- use 'sainnhe/sonokai'
+    -- use({
+    --     "catppuccin/nvim",
+    --     as = "catppuccin"
+    -- })
+
+    -- For Packer
+    use 'EdenEast/nightfox.nvim'
+
+    -- rust-tools
+    use 'simrat39/rust-tools.nvim'
+    use 'nvim-lua/plenary.nvim'
+    use 'mfussenegger/nvim-dap' 
 end)
 
 
