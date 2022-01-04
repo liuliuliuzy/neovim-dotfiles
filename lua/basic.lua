@@ -31,7 +31,7 @@ vim.o.clipboard = 'unnamedplus'-- doesn't work
 -- editor settings
 --------------------
 opt.number = true              -- show line numbers
-opt.relativenumber = true      -- show relative line number
+-- opt.relativenumber = true      -- show relative line number
 opt.cursorline = true          -- highlight current line
 -- tabs & indent settings
 opt.expandtab = true           -- use spaces instead of tabs

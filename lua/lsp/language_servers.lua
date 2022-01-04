@@ -1,5 +1,6 @@
 -- configure language servers
-vim.lsp.set_log_level("debug")
+-- 这里设置为debug的话，日志占用空间太大，所以注释掉
+-- vim.lsp.set_log_level("debug")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
