@@ -73,19 +73,19 @@ nvim_lsp.ccls.setup {
 
 -- gopls
 -- according to https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim
-nvim_lsp.gopls.setup {
-    on_attach = my_on_attach,
-    capabilities = capabilities,
-    cmd = {"gopls", "serve"},
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-        },
-    },
-}
+-- nvim_lsp.gopls.setup {
+--     on_attach = my_on_attach,
+--     capabilities = capabilities,
+--     cmd = {"gopls", "serve"},
+--     settings = {
+--         gopls = {
+--             analyses = {
+--                 unusedparams = true,
+--             },
+--             staticcheck = true,
+--         },
+--     },
+-- }
 
 -- rust
 -- use rust-tools: https://github.com/simrat39/rust-tools.nvim

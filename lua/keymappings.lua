@@ -6,6 +6,9 @@
 local map = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true}
 
+-- remap esc
+-- map('i', '<Alt>', '<Esc', opt)
+
 -- vscode like
 map('n', '<C-s>', ':w<CR>', opt)   -- ctrl + s to save
 

@@ -25,7 +25,13 @@ lua require('lsp/nvim-cmp')
 lua require('lsp/diagnostic_signs')
 lua require('lsp/language_servers')
 lua require('lsp/lua-lsp')
+lua require('lsp/gopls')
 
 " 复制到windows剪贴板
 " https://stackoverflow.com/questions/44480829/how-to-copy-to-clipboard-in-vim-of-bash-on-windows
 autocmd TextYankPost * if v:event.operator ==# 'y' | call system('/mnt/c/Windows/System32/clip.exe', @0) | endif
+
+
+" Go 设置
+autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
+autocmd BufWritePre *.go lua goimports(1000)
